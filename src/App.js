@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Cell from './components/Cell';
+import ControlPanel from './components/ControlPanel';
 
-function App() {
+const App = () => {
+  const rows = 10;
+  const columns = 10;
+  
+  const cellIds = Array.from({ length: rows * columns }, (_, i) => i);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="p-4">
+      <ControlPanel />
+      <div className="grid grid-cols-10 gap-2 mt-4">
+        {cellIds.map((id) => (
+          <Cell key={id} id={id} />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
